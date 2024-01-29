@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vesting Contract Interface</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #001233;
+            color: #fff;
+            text-align: left;
+        }
+        
+        h1 {
+            color: #fff;
+            margin-bottom: 30px;
+        }
+        
+        form {
+            background-color: #8b795e;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-top: 20px;
+            max-width: 400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        label {
+            margin-top: 10px;
+            display: block;
+            color: #fff;
+        }
+        
+        input,
+        select {
+            margin-bottom: 10px;
+            padding: 8px;
+            width: calc(100% - 20px);
+        }
+        
+        button {
+            display: inline-block;
+            padding: 10px;
+            background-color: #ff595a;
+            /* Coral red */
+            color: #001233;
+            /* Deep blue */
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 10px;
+        }
+        
+        button:hover {
+            background-color: #d62c2c;
+            /* Darker coral red on hover */
+        }
+        
+        #status {
+            margin-top: 20px;
+            font-weight: bold;
+            color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Vesting Contract Interface</h1>
+    <form id="vestingForm">
+        <label for="beneficiaryAddress">Beneficiary Address:</label>
+        <input type="text" id="beneficiaryAddress" required>
+
+        <label for="startTime">Start Time (Epoch Seconds):</label>
+        <input type="number" id="startTime" required>
+
+        <label for="cliffDuration">Cliff Duration (Seconds):</label>
+        <input type="number" id="cliffDuration" value="0" required>
+
+        <label for="vestingDuration">Vesting Duration (Seconds):</label>
+        <input type="number" id="vestingDuration" required>
+
+        <label for="slicePeriod">Slice Period (Seconds):</label>
+        <input type="number" id="slicePeriod" required>
+
+        <label for="totalAmount">Total Amount:</label>
+        <input type="number" id="totalAmount" value="0" required>
+
+        <label for="revocable">Revocable:</label>
+        <select id="revocable">
+            <option value="true">Yes</option>
+            <option value="false">No</option>
+        </select>
+        <div class="function_buttons">
+            <button type="button" onclick="createVestingSchedule()">Create Vesting Schedule</button>
+            <button type="button" onclick="releaseTokens()">Release Tokens</button>
+            <button type="button" onclick="revokeVestingSchedule()">Revoke Vesting Schedule</button> 
+            <button type="button" onclick="getTime()">Get Current Time</button>
+        </div>
+        
+    </form>
+    <div id="status"></div>
+    <script src="https://cdn.jsdelivr.net/npm/web3@1.3.4/dist/web3.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
